@@ -7,7 +7,7 @@ SR=4
 
 # Grid discretization
 ACTIONS = [COC,WL,WR,SL,SR]
-TAUS    = [0,5,10,15,20,30,40,60];
+TAUS    = [0,1,2,3,4,5,6,7,8,9];
 
 XS = convert(Array{Float32,1},vcat(LinRange(-10000,-5000,6),
           LinRange(-4000,-3250,4),LinRange(-3000,-1050,40),

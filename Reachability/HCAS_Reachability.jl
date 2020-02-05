@@ -8,7 +8,7 @@ include("Reach_Functions.jl")
 include("Reach_Constants.jl")
 
 
-function getNetworks(folder="../networks",ver=2,hu=40,epochs=1000)
+function getNetworks(folder="../networks_sxu/ACAS_sXu_v2_DNNs_wCoc",ver=2,epochs=200)
     #= Load all of the neural networks
     Given information about neural network version, load the networks into a list
     
@@ -16,7 +16,6 @@ function getNetworks(folder="../networks",ver=2,hu=40,epochs=1000)
     Inputs: 
         folder (string): Folder where neural networks are stored
         ver (int, 2): version number of networks
-        hu  (int, 40): Number of hidden units in each layer (written in filename)
         epochs (int, 1000): Epoch number of neural network
     
     Outputs:
@@ -26,7 +25,7 @@ function getNetworks(folder="../networks",ver=2,hu=40,epochs=1000)
     for pra in ACTIONS
         nets_tau = []
         for tau in TAUS
-            nnet_file_name = @sprintf("%s/HCAS_rect_v%d_pra%d_tau%02d_%dHU_%03d.nnet",folder,ver,pra,tau,hu,epochs)
+            nnet_file_name = @sprintf("%s/ACAS_sXu_v%d_model5_vertical_tau%d_pra%d_%dEpochs.nnet",folder,ver,tau,pra,epochs)
             nets_tau = vcat(nets_tau,NNet(nnet_file_name))
         end
         if pra==COC
@@ -601,14 +600,13 @@ function reluValToMmap(folder,ver=6;praInds=1:NUMACTION,tauInds=1:NUMTAU)
 end
 
 
-function writeNetworkActionsMmap(;folder="NetworkApprox",nnetFolder="../networks",reluvalFolder="../ReluVal/Results",ver=6, hu=25, epochs=3000,useReluVal=false)
+function writeNetworkActionsMmap(;folder="NetworkApprox",nnetFolder="../networks_sxu/ACAS_sXu_v2_DNNs_wCoc",reluvalFolder="../ReluVal/Results",ver=2, epochs=200,useReluVal=false)
     #= Write advisories given by network to a memory-mapped array. Advisories can
        be determined by sampling a point within each cell or by using ReluVal. If 
        using ReluVal, then ReluVal must be run first.
     Inputs:
         folder (string): Folder to write memory-mapped file
         ver (int): Version of neural network
-        hu (int): Hidden units in each layer of network
         epochs (int): Number of epochs used for training
         useReluVal (bool): True if using ReluVal, False for sampling
     Outputs:
@@ -625,7 +623,7 @@ function writeNetworkActionsMmap(;folder="NetworkApprox",nnetFolder="../networks
     if useReluVal
         @time netActions = reluValToMmap(reluvalFolder,ver)
     else
-        nets = getNetworks(nnetFolder,ver,hu,epochs)
+        nets = getNetworks(nnetFolder,ver,epochs)
         @time netActions = sampleToMmap(nets);
     end
     
