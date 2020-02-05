@@ -6,29 +6,36 @@
 
 for pra in `seq 0 4`;
 do
-    ./network_test_HCAS ../networks/HCAS_rect_v6_pra${pra}_tau00_25HU_3000.nnet > ./Results/HCAS_v6_pra${pra}_tau00.txt &
-    ./network_test_HCAS ../networks/HCAS_rect_v6_pra${pra}_tau05_25HU_3000.nnet > ./Results/HCAS_v6_pra${pra}_tau05.txt &
+    ./network_test_HCAS ../networks_sxu/ACAS_sXu_v2_model5_vertical_tau0_pra${pra}_200Epochs.nnet > ./Results/ACAS_sXu_v2_tau0_pra${pra}.txt &
+    ./network_test_HCAS ../networks_sxu/ACAS_sXu_v2_model5_vertical_tau1_pra${pra}_200Epochs.nnet > ./Results/ACAS_sXu_v2_tau1_pra${pra}.txt &
 done
 wait
 
 for pra in `seq 0 4`;
 do
-    ./network_test_HCAS ../networks/HCAS_rect_v6_pra${pra}_tau10_25HU_3000.nnet > ./Results/HCAS_v6_pra${pra}_tau10.txt &
-    ./network_test_HCAS ../networks/HCAS_rect_v6_pra${pra}_tau15_25HU_3000.nnet > ./Results/HCAS_v6_pra${pra}_tau15.txt &
+    ./network_test_HCAS ../networks_sxu/ACAS_sXu_v2_model5_vertical_tau2_pra${pra}_200Epochs.nnet > ./Results/ACAS_sXu_v2_tau2_pra${pra}.txt &
+    ./network_test_HCAS ../networks_sxu/ACAS_sXu_v2_model5_vertical_tau3_pra${pra}_200Epochs.nnet > ./Results/ACAS_sXu_v2_tau3_pra${pra}.txt &
 done
 wait
 
 for pra in `seq 0 4`;
 do
-    ./network_test_HCAS ../networks/HCAS_rect_v6_pra${pra}_tau20_25HU_3000.nnet > ./Results/HCAS_v6_pra${pra}_tau20.txt &
-    ./network_test_HCAS ../networks/HCAS_rect_v6_pra${pra}_tau30_25HU_3000.nnet > ./Results/HCAS_v6_pra${pra}_tau30.txt &
+    ./network_test_HCAS ../networks_sxu/ACAS_sXu_v2_model5_vertical_tau4_pra${pra}_200Epochs.nnet > ./Results/ACAS_sXu_v2_tau4_pra${pra}.txt &
+    ./network_test_HCAS ../networks_sxu/ACAS_sXu_v2_model5_vertical_tau5_pra${pra}_200Epochs.nnet > ./Results/ACAS_sXu_v2_tau5_pra${pra}.txt &
 done
 wait
 
 for pra in `seq 0 4`;
 do
-    ./network_test_HCAS ../networks/HCAS_rect_v6_pra${pra}_tau40_25HU_3000.nnet > ./Results/HCAS_v6_pra${pra}_tau40.txt &
-    ./network_test_HCAS ../networks/HCAS_rect_v6_pra${pra}_tau60_25HU_3000.nnet > ./Results/HCAS_v6_pra${pra}_tau60.txt &
+    ./network_test_HCAS ../networks_sxu/ACAS_sXu_v2_model5_vertical_tau6_pra${pra}_200Epochs.nnet > ./Results/ACAS_sXu_v2_tau6_pra${pra}.txt &
+    ./network_test_HCAS ../networks_sxu/ACAS_sXu_v2_model5_vertical_tau7_pra${pra}_200Epochs.nnet > ./Results/ACAS_sXu_v2_tau7_pra${pra}.txt &
+done
+wait
+
+for pra in `seq 0 4`;
+do
+    ./network_test_HCAS ../networks_sxu/ACAS_sXu_v2_model5_vertical_tau8_pra${pra}_200Epochs.nnet > ./Results/ACAS_sXu_v2_tau8_pra${pra}.txt &
+    ./network_test_HCAS ../networks_sxu/ACAS_sXu_v2_model5_vertical_tau9_pra${pra}_200Epochs.nnet > ./Results/ACAS_sXu_v2_tau9_pra${pra}.txt &
 done
 wait
 
