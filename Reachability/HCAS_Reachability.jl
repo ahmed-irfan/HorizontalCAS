@@ -578,7 +578,7 @@ function reluValToMmap(folder,ver=6;praInds=1:NUMACTION,tauInds=1:NUMTAU)
     for praInd = praInds
         for tauInd = tauInds
             println(@sprintf("RA index: %d, Tau Index: %d\n",praInd,tauInd))
-            file = @sprintf("%s/HCAS_v%d_pra%d_tau%02d.txt",folder,ver,ACTIONS[praInd],TAUS[tauInd])
+            file = @sprintf("%s/ACAS_sXu_v%d_tau%d_pra%d.txt",folder,ver,TAUS[tauInd],ACTIONS[praInd])
             raInd=0
             f=open(file)
             while !eof(f)
