@@ -7,8 +7,11 @@ SR=4
 
 # Grid discretization
 ACTIONS = [COC,WL,WR,SL,SR]
+# AI: check in the training data -- these values are indices now, we should check what they mean in the training data
 TAUS    = [0,1,2,3,4,5,6,7,8,9];
 
+# maximum sensing region for sxu is 36656 (check the headers of the training data)
+# we need to adapt the following values (XS and YS)
 XS = convert(Array{Float32,1},vcat(LinRange(-10000,-5000,6),
           LinRange(-4000,-3250,4),LinRange(-3000,-1050,40),
           LinRange(-1000,1000,101), LinRange(1040,6000,125),

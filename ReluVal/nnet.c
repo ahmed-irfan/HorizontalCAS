@@ -301,8 +301,14 @@ void load_inputs(int reg, int inputSize, float *u, float *l, float *XS, float *Y
     int yInd = reg-(reg/NUMY)*NUMY;
     int xInd = reg/NUMY;
     
-    float upper[] = {XS[xInd+1],YS[yInd+1],PSIS[pInd+1]};
-    float lower[] = {XS[xInd],YS[yInd],PSIS[pInd]};
+    // AI: adding a fixed value for ownship and intruder speed
+    float speedOwnship = 200;
+    float speedIntruder = 180;
+
+    // AI: made this to 5 dimensions -- originally it was 3 dimensional
+    float upper[] = {XS[xInd+1],YS[yInd+1],PSIS[pInd+1], speedOwnship, speedIntruder};
+    float lower[] = {XS[xInd],YS[yInd],PSIS[pInd], speedOwnship, speedIntruder};
+
     memcpy(u, upper, sizeof(float)*inputSize);
     memcpy(l, lower, sizeof(float)*inputSize);
 }
