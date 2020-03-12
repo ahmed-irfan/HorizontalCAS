@@ -8,7 +8,7 @@ include("Reach_Functions.jl")
 include("Reach_Constants.jl")
 
 
-function getNetworks(folder="../networks_sxu/ACAS_sXu_v2_DNNs_wCoc",ver=2,epochs=200)
+function getNetworks(folder="../networks_sxu/ACAS_sXu_v3_DNNs_rect",ver=3,epochs=200)
     #= Load all of the neural networks
     Given information about neural network version, load the networks into a list
     
@@ -25,7 +25,7 @@ function getNetworks(folder="../networks_sxu/ACAS_sXu_v2_DNNs_wCoc",ver=2,epochs
     for pra in ACTIONS
         nets_tau = []
         for tau in TAUS
-            nnet_file_name = @sprintf("%s/ACAS_sXu_v%d_model5_vertical_tau%d_pra%d_%dEpochs.nnet",folder,ver,tau,pra,epochs)
+            nnet_file_name = @sprintf("%s/ACAS_sXu_v%d_coc_rect_model1_vertical_tau%d_pra%d_%dEpochs.nnet",folder,ver,tau,pra,epochs)
             nets_tau = vcat(nets_tau,NNet(nnet_file_name))
         end
         if pra==COC
@@ -565,7 +565,7 @@ function sampleToMmap(nets;vown=200.0,vint=200.0,batch_size = 10000000)
     return acts
 end
 
-function reluValToMmap(folder,ver=6;praInds=1:NUMACTION,tauInds=1:NUMTAU)
+function reluValToMmap(folder,ver=3;praInds=1:NUMACTION,tauInds=1:NUMTAU)
     #= Read the output from ReluVal to create the network action BitArray
     Inputs:
         ver (int): Version of neural networks
@@ -600,7 +600,7 @@ function reluValToMmap(folder,ver=6;praInds=1:NUMACTION,tauInds=1:NUMTAU)
 end
 
 
-function writeNetworkActionsMmap(;folder="NetworkApprox",nnetFolder="../networks_sxu/ACAS_sXu_v2_DNNs_wCoc",reluvalFolder="../ReluVal/Results",ver=2, epochs=200,useReluVal=false)
+function writeNetworkActionsMmap(;folder="NetworkApprox",nnetFolder="../networks_sxu/ACAS_sXu_v3_DNNs_rect",reluvalFolder="../ReluVal/Results",ver=3, epochs=200,useReluVal=false)
     #= Write advisories given by network to a memory-mapped array. Advisories can
        be determined by sampling a point within each cell or by using ReluVal. If 
        using ReluVal, then ReluVal must be run first.
