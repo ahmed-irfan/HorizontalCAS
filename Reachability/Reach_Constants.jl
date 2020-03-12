@@ -8,7 +8,7 @@ SR=4
 # Grid discretization
 ACTIONS = [COC,WL,WR,SL,SR]
 # AI: check in the training data -- these values are indices now, we should check what they mean in the training data
-TAUS    = [0,1,2,3,4,5,6,7,8,9];
+TAUS    = [0,1,5,10,20,40,60,80,100,101];
 
 # maximum sensing region for sxu is 36656 (check the headers of the training data)
 # we need to adapt the following values (XS and YS)
