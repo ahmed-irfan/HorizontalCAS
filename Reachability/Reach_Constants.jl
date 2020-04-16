@@ -12,15 +12,16 @@ TAUS    = [0,1,5,10,20,40,60,80,100,101];
 
 # maximum sensing region for sxu is 36656 (check the headers of the training data)
 # we need to adapt the following values (XS and YS)
-XS = convert(Array{Float32,1},vcat(LinRange(-10000,-5000,6),
-          LinRange(-4000,-3250,4),LinRange(-3000,-1050,40),
-          LinRange(-1000,1000,51), LinRange(1040,6000,125),
-          LinRange(6050,10000,80),  LinRange(10100,15000,50),
-          LinRange(15200,30000,75), LinRange(31000,40000,10)))
-YS = convert(Array{Float32,1},vcat(LinRange(-25000,-16000,10),LinRange(-15000,-8200,35),
-          LinRange(-8000,-4100,40),LinRange(-4000,-1040,75),
-          LinRange(-1000,1000,51),LinRange(1040,4000,75),
-          LinRange(4100,8000,40),LinRange(8200,15000,35),LinRange(16000,25000,10)))
+XS = convert(Array{Float32,1},vcat(LinRange(-5000,-3200,10),
+          LinRange(-3000,-1100,20),
+          LinRange(-1000,1000,41), LinRange(1100,3000,20),
+          LinRange(3200,5000,10), LinRange(5250,10000,20),
+          LinRange(10250,13000,12), LinRange(13500,15000,4)))
+YS = convert(Array{Float32,1},vcat(LinRange(-10000,-5250,20),
+          LinRange(-5000,-3200,10),
+          LinRange(-3000,-1100,20),
+          LinRange(-1000,1000,41), LinRange(1100,3000,20),
+          LinRange(3200,5000,10), LinRange(5250,10000,20)))
 
 PSIS_DEG = convert(Array{Float32,1},LinRange(-180.0,180.0,181))
 PSIS = convert(Array{Float32,1},PSIS_DEG*pi/180.0)
