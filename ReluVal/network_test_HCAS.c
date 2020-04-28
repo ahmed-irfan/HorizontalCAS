@@ -56,7 +56,7 @@ int main( int argc, char *argv[])
 {
     char *FULL_NET_PATH;
 
-    PROPERTY=2;
+    PROPERTY=3;
     float scaleForObsError = 0.0;
 
     if (argc > 9 || argc < 2) {
